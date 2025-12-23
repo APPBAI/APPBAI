@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function BrandSignature() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -43,9 +44,11 @@ export default function BrandSignature() {
                     className="relative z-10 text-center"
                 >
                     <div className="flex justify-center mb-8 md:mb-12">
-                        <img
+                        <Image
                             src="/appbai-logo.png"
                             alt="APPBAI"
+                            width={128}
+                            height={128}
                             className="h-16 md:h-24 lg:h-32 w-auto object-contain"
                         />
                     </div>

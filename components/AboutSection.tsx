@@ -105,7 +105,7 @@ export default function AboutSection() {
                                     textAnchor="middle"
                                     className="fill-gray-500 text-xs font-body"
                                 >
-                                    What you're
+                                    What you&apos;re
                                 </text>
                                 <text
                                     x="330"
