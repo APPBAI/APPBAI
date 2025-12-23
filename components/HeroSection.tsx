@@ -53,9 +53,9 @@ export default function HeroSection() {
                             className="overflow-hidden mt-2"
                             style={{ y: y1 }}
                         >
-                            <h1 className="font-display text-display-xl leading-[0.85] tracking-tighter text-white text-right pr-4 lg:pr-0 lg:ml-[15%]">
+                            <h2 className="font-display text-display-xl leading-[0.85] tracking-tighter text-white text-right pr-4 lg:pr-0 lg:ml-[15%]">
                                 technology
-                            </h1>
+                            </h2>
                         </motion.div>
 
                         <motion.div
@@ -63,15 +63,15 @@ export default function HeroSection() {
                             className="overflow-hidden mt-2"
                             style={{ y: y2 }}
                         >
-                            <h1 className="font-display text-display-xl leading-[0.85] tracking-tighter text-white text-left pl-8 lg:pl-0 lg:ml-[10%]">
+                            <h2 className="font-display text-display-xl leading-[0.85] tracking-tighter text-white text-left pl-8 lg:pl-0 lg:ml-[10%]">
                                 that helps
-                            </h1>
+                            </h2>
                         </motion.div>
 
                         <motion.div variants={revealText} className="overflow-hidden mt-2">
-                            <h1 className="font-display text-display-xl leading-[0.85] tracking-tighter text-white text-center lg:text-left lg:ml-[25%]">
+                            <h2 className="font-display text-display-xl leading-[0.85] tracking-tighter text-white text-center lg:text-left lg:ml-[25%]">
                                 society
-                            </h1>
+                            </h2>
                         </motion.div>
                     </div>
 
