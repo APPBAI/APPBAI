@@ -22,6 +22,9 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: "APPBAI — Coming Soon",
     description: "Building technology that helps society",
+    icons: {
+        icon: "/Favicon.svg",
+    },
     openGraph: {
         title: "APPBAI — Coming Soon",
         description: "Building technology that helps society",
