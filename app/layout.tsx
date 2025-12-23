@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         template: "%s | APPBAI",
     },
     description: "APPBAI is a design and technology studio building the next generation of intelligent systems that amplify human potential and help society.",
-    keywords: ["APPBAI", "Technology", "AI", "Tech", "AI Studio", "Impact Technology", "Social Good Tech", "Intelligent Systems", "Future of Work", "Ikigai Design"],
+    keywords: ["appbai", "APPBAI", "Technology", "AI", "Tech", "AI Studio", "Impact Technology", "Social Good Tech", "Intelligent Systems", "Future of Work", "Ikigai Design"],
     authors: [{ name: "APPBAI" }],
     creator: "APPBAI",
     publisher: "APPBAI",
