@@ -13,11 +13,9 @@ export async function POST(request: Request) {
 
         if (!GOOGLE_FORM_URL || !ENTRY_ID) {
             console.error('Missing Google Form configuration');
-            // For now, let's return a specific error if not configured
             return NextResponse.json({ error: 'System configuration error' }, { status: 500 });
         }
 
-        // Google Forms expects a URL-encoded form submission
         const formData = new URLSearchParams();
         formData.append(ENTRY_ID, email);
 
@@ -29,12 +27,10 @@ export async function POST(request: Request) {
             },
         });
 
-        // Google Form returns a success even if the POST is technically just a redirect/response
-        // Usually, 200 or 302 means it worked.
-        if (response.ok || response.status === 302) {
+        if (response.ok || response.status === 302 || (response.status >= 200 && response.status < 400)) {
             return NextResponse.json({ success: true });
         } else {
-            throw new Error('Failed to submit to Google Form');
+            throw new Error(`Failed to submit to Google Form: ${response.status}`);
         }
     } catch (error) {
         console.error('Early access submission error:', error);
