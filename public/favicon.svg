@@ -1,0 +1,6 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="128" cy="128" r="128" fill="black"/>
+  <g transform="translate(8.5, 7.5)">
+    <path d="M78 181L114.397 61H124.603L161 181H152.293L117.323 66H121.463L86.7068 181H78Z" fill="white"/>
+  </g>
+</svg>
