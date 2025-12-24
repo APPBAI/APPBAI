@@ -69,4 +69,4 @@ This is **not a traditional landing page**—it's a product demo showcasing:
 
 ---
 
-Built with creative confidence by APPBAI.
+Built with creative purpose,love & confidence by APPBAI.
