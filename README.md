@@ -1,6 +1,6 @@
 # APPBAI OFFICIAL WEBSITE - Coming Soon
 
-A creative, high-end "Coming Soon" website for APPBAI that demonstrates technical excellence through editorial typography, slow confident animations, and asymmetric layouts.
+A creative, high-end "Coming Soon" website for APPBAI that demonstrates technical excellence through editorial typography, slow confident animations, and asymmetric and creative layouts.
 
 ## Quick Start
 
