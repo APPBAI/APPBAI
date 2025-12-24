@@ -39,6 +39,7 @@ export const metadata: Metadata = {
         icon: "/Favicon.svg",
         apple: "/Favicon.svg",
     },
+    manifest: "/manifest.json",
     alternates: {
         canonical: "/",
     },
