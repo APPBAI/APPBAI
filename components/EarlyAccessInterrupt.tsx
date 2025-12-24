@@ -4,6 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 
 export default function EarlyAccessInterrupt() {
+    const [email, setEmail] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [message, setMessage] = useState("");
     const [isDismissed, setIsDismissed] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -14,6 +17,36 @@ export default function EarlyAccessInterrupt() {
 
     const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email || !email.includes("@")) {
+            setStatus("error");
+            setMessage("Please enter a valid email address.");
+            return;
+        }
+
+        setStatus("loading");
+        try {
+            const response = await fetch("/api/early-access", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+            });
+
+            if (response.ok) {
+                setStatus("success");
+                setMessage("Success. You're on the list.");
+                setEmail("");
+            } else {
+                setStatus("error");
+                setMessage("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            setStatus("error");
+            setMessage("Connection error. Please check your internet.");
+        }
+    };
 
     if (isDismissed) return null;
 
@@ -53,21 +86,38 @@ export default function EarlyAccessInterrupt() {
                         </p>
 
                         {/* Minimal form */}
-                        <div className="flex flex-col sm:flex-row gap-4 max-w-md md:max-w-xl mx-auto mb-8 w-full">
-                            <input
-                                type="email"
-                                placeholder="your@email.com"
-                                className="flex-1 bg-transparent border border-gray-700 px-6 py-4 text-white font-body text-body-md focus:border-white focus:outline-none transition-colors duration-500 w-full text-center sm:text-left"
-                            />
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                transition={{ duration: 0.3 }}
-                                className="px-8 py-4 bg-white text-black font-display font-semibold text-body-md hover:bg-gray-100 transition-colors duration-500 w-full sm:w-auto whitespace-nowrap"
+                        <form onSubmit={handleSubmit} className="relative z-10">
+                            <div className="flex flex-col sm:flex-row gap-4 max-w-md md:max-w-xl mx-auto mb-4 w-full">
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="your@email.com"
+                                    disabled={status === "loading" || status === "success"}
+                                    className="flex-1 bg-transparent border border-gray-700 px-6 py-4 text-white font-body text-body-md focus:border-white focus:outline-none transition-colors duration-500 w-full text-center sm:text-left disabled:opacity-50"
+                                />
+                                <motion.button
+                                    type="submit"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    disabled={status === "loading" || status === "success"}
+                                    transition={{ duration: 0.3 }}
+                                    className="px-8 py-4 bg-white text-black font-display font-semibold text-body-md hover:bg-gray-100 transition-colors duration-500 w-full sm:w-auto whitespace-nowrap disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                >
+                                    {status === "loading" ? "Processing..." : "Request Access"}
+                                </motion.button>
+                            </div>
+
+                            {/* Status Message */}
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: message ? 1 : 0 }}
+                                className={`font-body text-body-sm mb-8 ${status === "error" ? "text-red-400" : "text-green-400"
+                                    }`}
                             >
-                                Request Access
-                            </motion.button>
-                        </div>
+                                {message}
+                            </motion.p>
+                        </form>
 
                         {/* Dismiss */}
                         <button
