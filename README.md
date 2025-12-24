@@ -69,4 +69,4 @@ This is **not a traditional landing page**—it's a product demo showcasing:
 
 ---
 
-Built with creative purpose,love & confidence by APPBAI.                                                                                             Contact info@appbai.com for more enquires.
+Built with creative purpose,love & confidence by APPBAI.
