@@ -148,7 +148,7 @@ export default function ChristmasPopup() {
                                             animate={error ? { x: [-10, 10, -10, 10, 0] } : {}}
                                             className={`w-full bg-black/50 border ${error ? "border-red-500" : "border-gray-700 focus:border-white"} p-4 text-center text-white font-mono text-lg outline-none transition-colors`}
                                         />
-                                        <p className="text-center text-xs text-gray-500 mt-2">Try: BAI2025</p>
+                                        {/* <p className="text-center text-xs text-gray-500 mt-2">Try: BAI2025</p> */}
                                     </div>
 
                                     <div className="flex gap-2">
