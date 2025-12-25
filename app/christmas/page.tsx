@@ -172,33 +172,75 @@ const PartyLayout = () => {
 };
 
 const MinimalLayout = () => {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
     return (
-        <div className="relative z-10 font-sans text-gray-900 max-w-5xl px-8 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className={`relative z-10 font-sans transition-colors duration-700 ease-in-out max-w-5xl px-8 w-full ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+
+            {/* Blueprint Grid Background (Visible in Dark Mode) */}
+            {/* Blueprint Grid Background (Visible in Dark Mode) - Fixed to cover viewport */}
+            <div
+                className={`fixed inset-0 pointer-events-none transition-opacity duration-700 z-[1] ${isDarkMode ? "opacity-100" : "opacity-0"}`}
+                style={{
+                    backgroundColor: isDarkMode ? '#000' : 'transparent',
+                    backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
+                }}
+            />
+
+            {/* Dark Mode Toggle - Fixed to Top Right Viewport */}
+            <div className="fixed top-6 right-6 z-[200]">
+                <button
+                    onClick={() => setIsDarkMode(!isDarkMode)}
+                    className={`w-12 h-6 rounded-full p-1 transition-colors duration-500 ease-in-out flex items-center shadow-lg border ${isDarkMode ? "bg-white border-white" : "bg-gray-200 border-gray-300"}`}
+                >
+                    <motion.div
+                        layout
+                        className={`w-4 h-4 rounded-full shadow-sm ${isDarkMode ? "bg-black" : "bg-white"}`}
+                    />
+                </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+                {/* Decorative technical lines for "Blueprint" feel */}
+                {isDarkMode && (
+                    <div className="absolute -left-8 top-0 bottom-0 w-px bg-white/20 hidden md:block">
+                        <div className="absolute top-0 -left-1 text-[10px] bg-black px-1">HASH: 0x882</div>
+                        <div className="absolute bottom-0 -left-1 text-[10px] bg-black px-1">END_BLOCK</div>
+                    </div>
+                )}
+
                 <div className="text-left">
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 text-black">
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 transition-colors duration-700">
                         Efficient.<br />Impactful.
                     </h1>
-                    <p className="text-xl text-gray-500 max-w-md">
+                    <p className={`text-xl max-w-md transition-colors duration-700 ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
                         To the team that simplifies complexity: Your work speaks for itself. Clean code, clear operations, executed perfectly.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white p-8 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="text-xs text-gray-400 uppercase tracking-widest mb-2">Tasks Completed</div>
+                    <div className={`p-8 rounded-none border transition-colors duration-700 ${isDarkMode ? "bg-black border-white/30" : "bg-white border-gray-200 shadow-sm"}`}>
+                        <div className="text-xs uppercase tracking-widest mb-2 opacity-50">Tasks Completed</div>
                         <div className="text-4xl font-light">∞</div>
                     </div>
-                    <div className="bg-white p-8 rounded-none border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="text-xs text-gray-400 uppercase tracking-widest mb-2">Effort Level</div>
+                    <div className={`p-8 rounded-none border transition-colors duration-700 ${isDarkMode ? "bg-black border-white/30" : "bg-white border-gray-200 shadow-sm"}`}>
+                        <div className="text-xs uppercase tracking-widest mb-2 opacity-50">Effort Level</div>
                         <div className="text-4xl font-light">110%</div>
                     </div>
-                    <div className="bg-black text-white p-8 rounded-none col-span-2">
-                        <div className="text-xs text-gray-400 uppercase tracking-widest mb-2">Notice</div>
+                    <div className={`p-8 rounded-none col-span-2 transition-colors duration-700 ${isDarkMode ? "bg-white text-black underline decoration-1 underline-offset-4" : "bg-black text-white"}`}>
+                        <div className="text-xs uppercase tracking-widest mb-2 opacity-50">Notice</div>
                         <div className="text-xl font-medium">Have a restful break.</div>
                     </div>
                 </div>
             </div>
+
+            {/* Global Dark Mode Override for Parent Container */}
+            {isDarkMode && (
+                <style jsx global>{`
+                    body { background: #000 !important; }
+                `}</style>
+            )}
         </div>
     );
 };
