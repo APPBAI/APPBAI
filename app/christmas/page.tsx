@@ -92,32 +92,166 @@ const CyberLayout = () => {
     );
 };
 
+const PLAYLIST = [
+    { title: "Jingle Bells", src: "/audio/jingle-bells.mp3" },
+    { title: "Silent Night", src: "/audio/silent-night.mp3" },
+    { title: "Deck the Halls", src: "/audio/deck-the-halls.mp3" },
+    { title: "We Wish You a Merry Christmas", src: "/audio/we-wish-you-a-merry-christmas.mp3" },
+    { title: "O Holy Night", src: "/audio/o-holy-night.mp3" }
+];
+
 const CozyLayout = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentSongIndex, setCurrentSongIndex] = useState(0);
+    const [progress, setProgress] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+    // Format time helpers
+    const formatTime = (time: number) => {
+        if (isNaN(time)) return "0:00";
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    useEffect(() => {
+        const song = PLAYLIST[currentSongIndex];
+        const newAudio = new Audio(song.src);
+        // newAudio.loop = true; // Loop playlist instead of single song
+
+        const handleReady = () => {
+            console.log("Audio ready:", song.title);
+            setDuration(newAudio.duration);
+            if (isPlaying) {
+                newAudio.play().catch(e => console.error("Playback failed:", e));
+            }
+        };
+
+        const handleTimeUpdate = () => {
+            setProgress(newAudio.currentTime);
+        };
+
+        const handleEnded = () => {
+            nextSong(); // Auto-advance
+        };
+
+        const handleError = (e: Event) => {
+            if (newAudio.src === "" || newAudio.src.endsWith("/")) return;
+            console.error("Audio error:", newAudio.error, e);
+        };
+
+        newAudio.addEventListener('canplaythrough', handleReady);
+        newAudio.addEventListener('timeupdate', handleTimeUpdate);
+        newAudio.addEventListener('ended', handleEnded);
+        newAudio.addEventListener('error', handleError);
+
+        setAudio(newAudio);
+
+        return () => {
+            newAudio.removeEventListener('canplaythrough', handleReady);
+            newAudio.removeEventListener('timeupdate', handleTimeUpdate);
+            newAudio.removeEventListener('ended', handleEnded);
+            newAudio.removeEventListener('error', handleError);
+            newAudio.pause();
+            newAudio.src = "";
+        };
+    }, [currentSongIndex]); // Re-run when song changes
+
+    // Watch isPlaying to handle play/pause on the current audio instance
+    useEffect(() => {
+        if (!audio) return;
+        if (isPlaying) {
+            audio.play().catch(e => console.error("Playback failed:", e));
+        } else {
+            audio.pause();
+        }
+    }, [isPlaying, audio]);
+
+    const toggleMusic = () => setIsPlaying(!isPlaying);
+
+    const nextSong = () => {
+        setCurrentSongIndex((prev) => (prev + 1) % PLAYLIST.length);
+        setIsPlaying(true); // Auto-play next
+    };
+
+    const prevSong = () => {
+        setCurrentSongIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
+        setIsPlaying(true);
+    };
+
+    const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!audio) return;
+        const time = Number(e.target.value);
+        audio.currentTime = time;
+        setProgress(time);
+    };
+
     return (
-        <div className="relative z-10 font-serif text-center max-w-2xl px-6">
-            <div className="bg-[#4a0e0e]/80 border-2 border-[#FFD700]/30 p-8 md:p-16 rounded-[2rem] shadow-2xl backdrop-blur-sm relative overflow-hidden">
+        <div className="relative z-10 font-serif text-center max-w-2xl px-4 md:px-6">
+            <div className="bg-[#4a0e0e]/80 border-2 border-[#FFD700]/30 p-6 md:p-10 rounded-[2rem] shadow-2xl backdrop-blur-sm relative overflow-hidden transition-all">
                 {/* Decorative corners */}
-                <div className="absolute top-4 left-4 text-4xl text-[#FFD700]/20">❄️</div>
-                <div className="absolute top-4 right-4 text-4xl text-[#FFD700]/20">❄️</div>
-                <div className="absolute bottom-4 left-4 text-4xl text-[#FFD700]/20">❄️</div>
-                <div className="absolute bottom-4 right-4 text-4xl text-[#FFD700]/20">❄️</div>
+                <div className="absolute top-4 left-4 text-2xl md:text-4xl text-[#FFD700]/20">❄️</div>
+                <div className="absolute top-4 right-4 text-2xl md:text-4xl text-[#FFD700]/20">❄️</div>
+                <div className="absolute bottom-4 left-4 text-2xl md:text-4xl text-[#FFD700]/20">❄️</div>
+                <div className="absolute bottom-4 right-4 text-2xl md:text-4xl text-[#FFD700]/20">❄️</div>
 
-                <h1 className="text-5xl md:text-7xl text-[#FFD700] mb-8 font-medium italic tracking-tight">Warm Wishes</h1>
+                <h1 className="text-4xl md:text-6xl text-[#FFD700] mb-4 font-medium italic tracking-tight">Warm Wishes</h1>
 
-                <p className="text-xl md:text-2xl text-red-100 leading-relaxed mb-8">
-                    To the incredible team that keeps the fires burning: Thank you for your passion, your warmth, and your hard work.
+                <p className="text-lg md:text-xl text-red-100 leading-relaxed mb-6">
+                    To the incredible team that keeps the fires burning: Thank you.
                 </p>
 
-                <div className="text-center">
+                <div className="text-center mb-8">
                     <div className="inline-block py-2 px-6 border-t border-b border-[#FFD700]/30">
-                        <p className="text-[#FFD700] text-lg italic">&quot;{COZY_QUOTES[0]}&quot;</p>
+                        <p className="text-[#FFD700] text-sm md:text-base italic">&quot;{COZY_QUOTES[0]}&quot;</p>
                     </div>
                 </div>
 
-                <div className="mt-12 flex justify-center">
-                    <div className="w-16 h-16 relative">
+                {/* Audio Player UI */}
+                <div className="bg-[#2D0A0A]/50 rounded-xl p-4 border border-[#FFD700]/20">
+                    <div className="text-[#FFD700] text-sm mb-2 font-sans tracking-widest uppercase opacity-80">
+                        Now Playing
+                    </div>
+                    <div className="text-xl text-white font-medium mb-4">
+                        {PLAYLIST[currentSongIndex].title}
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="flex items-center gap-3 text-xs text-[#FFD700]/70 font-sans mb-4">
+                        <span>{formatTime(progress)}</span>
+                        <input
+                            type="range"
+                            min="0"
+                            max={duration || 0}
+                            value={progress}
+                            onChange={handleSeek}
+                            className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-[#FFD700] [&::-webkit-slider-thumb]:rounded-full"
+                        />
+                        <span>{formatTime(duration)}</span>
+                    </div>
+
+                    {/* Controls */}
+                    <div className="flex justify-center items-center gap-6">
+                        <button onClick={prevSong} className="text-2xl hover:scale-110 transition text-[#FFD700]">
+                            ⏮
+                        </button>
+                        <button
+                            onClick={toggleMusic}
+                            className="w-12 h-12 rounded-full bg-[#FFD700] text-[#2D0A0A] flex items-center justify-center hover:bg-white transition-all shadow-lg hover:shadow-[#FFD700]/50"
+                        >
+                            <span className="text-xl ml-0.5">{isPlaying ? '⏸' : '▶'}</span>
+                        </button>
+                        <button onClick={nextSong} className="text-2xl hover:scale-110 transition text-[#FFD700]">
+                            ⏭
+                        </button>
+                    </div>
+                </div>
+
+                <div className="mt-8 flex justify-center">
+                    <div className="w-12 h-12 relative">
                         <div className="absolute bottom-0 w-full h-full bg-orange-500 rounded-full mix-blend-screen filter blur-md animate-pulse"></div>
-                        <div className="absolute bottom-0 left-2 w-12 h-20 bg-yellow-400 rounded-full mix-blend-screen filter blur-lg animate-bounce"></div>
+                        <div className="absolute bottom-0 left-2 w-8 h-10 bg-yellow-400 rounded-full mix-blend-screen filter blur-lg animate-bounce"></div>
                     </div>
                 </div>
             </div>
