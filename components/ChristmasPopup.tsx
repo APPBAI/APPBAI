@@ -35,7 +35,7 @@ export default function ChristmasPopup() {
 
         const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-        const interval: any = setInterval(function () {
+        const interval = setInterval(function () {
             const timeLeft = animationEnd - Date.now();
 
             if (timeLeft <= 0) {
@@ -113,7 +113,7 @@ export default function ChristmasPopup() {
                                     className="p-6 border border-white/10 hover:border-white/50 bg-white/5 hover:bg-white/10 transition-all group flex flex-col items-center gap-4 py-8"
                                 >
                                     <span className="text-4xl filter grayscale group-hover:grayscale-0 transition-all">🎁</span>
-                                    <span className="font-display text-xl text-white">I'm a Visitor</span>
+                                    <span className="font-display text-xl text-white">I&apos;m a Visitor</span>
                                     <span className="text-xs text-gray-500 uppercase tracking-widest">Just Exploring</span>
                                 </motion.button>
 
