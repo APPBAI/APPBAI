@@ -3,6 +3,7 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import EarlyAccessInterrupt from "@/components/EarlyAccessInterrupt";
 import BrandSignature from "@/components/BrandSignature";
+import ChristmasPopup from "@/components/ChristmasPopup";
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <ProjectsSection />
             <EarlyAccessInterrupt />
             <BrandSignature />
+            <ChristmasPopup />
         </main>
     );
 }

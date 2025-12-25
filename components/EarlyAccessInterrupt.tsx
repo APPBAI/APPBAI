@@ -113,7 +113,7 @@ export default function EarlyAccessInterrupt() {
                                     className="px-10 py-4 bg-white text-black font-display font-bold text-body-md transition-all duration-300 w-full sm:w-auto whitespace-nowrap disabled:bg-white/20 disabled:text-white/40 disabled:cursor-not-allowed cursor-pointer"
                                 >
                                     {status === "loading" ? (
-                                        <span className="flex items-center gap-2">
+                                        <span className="flex justify-center items-center gap-2">
                                             <span className="w-1.5 h-1.5 bg-black rounded-full animate-bounce" />
                                             <span className="w-1.5 h-1.5 bg-black rounded-full animate-bounce [animation-delay:0.2s]" />
                                             <span className="w-1.5 h-1.5 bg-black rounded-full animate-bounce [animation-delay:0.4s]" />
