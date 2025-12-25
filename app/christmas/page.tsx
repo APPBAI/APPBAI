@@ -118,7 +118,11 @@ const CozyLayout = () => {
     useEffect(() => {
         const song = PLAYLIST[currentSongIndex];
         const newAudio = new Audio(song.src);
-        // newAudio.loop = true; // Loop playlist instead of single song
+
+        // Reset state for new song
+        setProgress(0);
+        setDuration(0);
+        newAudio.currentTime = 0;
 
         const handleReady = () => {
             console.log("Audio ready:", song.title);
@@ -480,14 +484,166 @@ const MobileThemeDrawer = ({ currentTheme, onSelect }: { currentTheme: ThemeKey,
     );
 };
 
-// --- Main Page Component ---
+// --- Visitor Experience Components ---
 
+const SnowGlobe = () => {
+    const triggerGlobalSnow = () => {
+        const duration = 5000;
+        const end = Date.now() + duration;
+
+        (function frame() {
+            // Launch from three points at the top to cover the screen
+            confetti({
+                particleCount: 3,
+                angle: 270, // Straight down
+                spread: 180, // Wide spread
+                origin: { x: Math.random(), y: -0.1 }, // Random x at top
+                colors: ['#ffffff'],
+                shapes: ['circle'],
+                scalar: Math.random() * 0.5 + 0.5, // Random sizes
+                drift: Math.random() * 2 - 1, // Random drift
+                gravity: 0.5, // Slow fall
+                ticks: 300 // Last longer
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        }());
+    };
+    return (
+        <div onClick={triggerGlobalSnow} className="relative w-64 h-64 md:w-80 md:h-80 mx-auto perspective-1000 group cursor-pointer active:cursor-grabbing">
+            <motion.div
+                className="w-full h-full relative preserve-3d transition-transform duration-200 ease-out bg-gradient-to-b from-blue-900/10 to-blue-500/5 rounded-full border-4 border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.1)] overflow-hidden backdrop-blur-[2px]"
+                whileHover={{ rotateY: 10, rotateX: -5 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                {/* Glass Reflection */}
+                <div className="absolute top-4 left-8 w-16 h-8 bg-white/10 rounded-full blur-xl transform -rotate-12 z-20"></div>
+
+                {/* Snow Particles */}
+                {[...Array(30)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute bg-white rounded-full"
+                        style={{
+                            width: Math.random() * 4 + 1 + "px",
+                            height: Math.random() * 4 + 1 + "px",
+                            left: Math.random() * 100 + "%",
+                        }}
+                        animate={{
+                            y: ["-10%", "110%"],
+                            x: [Math.random() * 10 - 5, Math.random() * 10 - 5],
+                            opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                            duration: Math.random() * 3 + 2,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: Math.random() * 5
+                        }}
+                    />
+                ))}
+
+                {/* Center Content */}
+                <div className="absolute inset-0 flex items-center justify-center z-10 flex-col">
+                    <div className="text-4xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">🏔️</div>
+                    <div className="text-xs text-blue-200 mt-2 font-mono tracking-widest opacity-70">APPBAI</div>
+                </div>
+
+                {/* Base */}
+                <div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+            </motion.div>
+
+            {/* Pedestal */}
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-8 bg-[#111] rounded-[50%] border-t border-white/20 shadow-2xl z-0"></div>
+        </div>
+    );
+};
+
+const PolyTree = ({ onComplete }: { onComplete: () => void }) => {
+    const [nodes, setNodes] = useState([false, false, false, false, false, false]);
+    const [complete, setComplete] = useState(false);
+
+    const toggleNode = (index: number) => {
+        if (complete) return;
+        const newNodes = [...nodes];
+        newNodes[index] = !newNodes[index];
+        setNodes(newNodes);
+
+        if (newNodes.every(n => n)) {
+            setComplete(true);
+            onComplete();
+            confetti({
+                particleCount: 50,
+                spread: 30,
+                origin: { y: 0.7 },
+                colors: ['#00FF00', '#FF0000', '#FFD700']
+            });
+        }
+    };
+
+    // SVG Layout for a simple tree
+    // Node coords: Top(50,10), MidL(30,40), MidR(70,40), BotL(10,80), BotC(50,80), BotR(90,80)
+    const coords = [
+        { x: 50, y: 15 },
+        { x: 30, y: 45 }, { x: 70, y: 45 },
+        { x: 15, y: 80 }, { x: 50, y: 80 }, { x: 85, y: 80 }
+    ];
+
+    return (
+        <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto flex items-center justify-center bg-black/20 rounded-3xl border border-white/5 p-4">
+            <AnimatePresence>
+                {complete && (
+                    <>
+                        {/* System Online Pulse */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="absolute inset-0 bg-green-500/10 rounded-3xl animate-pulse"
+                        />
+                    </>
+                )}
+            </AnimatePresence>
+
+            <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
+                {/* Connections */}
+                <path d="M50 15 L30 45 L50 80 L70 45 Z" stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none" />
+                <path d="M30 45 L15 80 L50 80 L85 80 L70 45" stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none" />
+
+                {/* Nodes */}
+                {coords.map((c, i) => (
+                    <motion.circle
+                        key={i}
+                        cx={c.x}
+                        cy={c.y}
+                        r="6"
+                        fill={nodes[i] ? (complete ? "#00FF00" : "#FFD700") : "#333"}
+                        stroke="#555"
+                        strokeWidth="2"
+                        className="cursor-pointer transition-colors duration-300"
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => toggleNode(i)}
+                    />
+                ))}
+            </svg>
+
+            <div className="absolute bottom-4 text-xs text-white/30 font-mono tracking-widest uppercase">
+                {complete ? "SYSTEM_ONLINE" : "Connect_Nodes"}
+            </div>
+        </div>
+    );
+};
+
+// --- Main Page Component ---
 function ChristmasContent() {
     const searchParams = useSearchParams();
     const type = searchParams.get("type");
     const isTeam = type === "team";
     const [mounted, setMounted] = useState(false);
     const [currentTheme, setCurrentTheme] = useState<ThemeKey>("cyber");
+    const [treeComplete, setTreeComplete] = useState(false);
 
     useEffect(() => {
         setMounted(true);
@@ -571,36 +727,98 @@ function ChristmasContent() {
 
     // Visitor View
     return (
-        <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-black" />
-            <div className="relative z-10 max-w-4xl px-6 text-center">
+        <div className="min-h-screen bg-slate-950 text-white relative flex flex-col items-center justify-start pt-20 pb-20 overflow-y-auto overflow-x-hidden">
+            <div className="fixed inset-0 bg-gradient-to-b from-slate-900 to-black z-0" />
+
+            <div className="relative z-10 max-w-4xl px-6 text-center w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="relative"
                 >
+                    <AnimatePresence>
+                        {treeComplete && (
+                            <motion.div
+                                initial={{ height: 0, opacity: 0, marginBottom: 0 }}
+                                animate={{ height: "auto", opacity: 1, marginBottom: 40 }}
+                                exit={{ height: 0, opacity: 0, marginBottom: 0 }}
+                                transition={{ duration: 1.2, ease: "easeOut" }}
+                                className="relative z-[200] overflow-hidden flex justify-center [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] opacity-100"
+                            >
+                                <motion.div
+                                    initial={{ scale: 0, y: -50 }}
+                                    animate={{ scale: 1, y: 0 }}
+                                    transition={{ duration: 1.2, delay: 0.1, ease: "backOut" }}
+                                    className="relative py-20"
+                                >
+                                    {/* Core Star */}
+                                    <div className="text-6xl md:text-9xl drop-shadow-[0_0_50px_rgba(255,215,0,0.8)] animate-pulse relative z-10">🌟</div>
+
+                                    {/* Light Beams */}
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 -z-10 bg-gradient-to-t from-transparent via-yellow-200/20 to-transparent w-2 h-96 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 blur-lg scale-150 transform-gpu"
+                                    />
+                                    <motion.div
+                                        animate={{ rotate: -360 }}
+                                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 -z-10 bg-gradient-to-t from-transparent via-yellow-100/30 to-transparent w-2 h-80 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 blur-md rotate-90 scale-150 transform-gpu"
+                                    />
+                                </motion.div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
                     <span className="block font-display text-2xl text-gold-400 mb-4 tracking-widest text-[#FFD700]">SEASON&apos;S GREETINGS</span>
-                    <h1 className="font-display text-6xl md:text-9xl text-white mb-8 leading-none">
+                    <h1 className="font-display text-6xl md:text-8xl text-white mb-6 leading-none">
                         Thank You
-                        <span className="block text-4xl md:text-6xl mt-2 font-light italic text-gray-400 font-serif">for believing in us</span>
+                        <span className="block text-3xl md:text-5xl mt-4 font-light italic text-gray-400 font-serif">for believing in us</span>
                     </h1>
                 </motion.div>
 
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-12 font-light"
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-16 font-light"
                 >
                     To our visitors, partners, and friends—your curiosity drives our innovation.
                     May your holidays be filled with peace, joy, and meaningful connections.
                 </motion.p>
+
+                {/* Holiday Lab Section */}
                 <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="mb-20"
                 >
-                    <Link href="/" className="inline-block px-10 py-4 bg-white text-black font-display font-medium rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 shadow-lg shadow-white/10">
+                    <div className="flex items-center justify-center gap-4 mb-8">
+                        <div className="h-px bg-white/10 w-12 md:w-24"></div>
+                        <h2 className="text-sm font-mono tracking-[0.2em] text-blue-300 uppercase">Holiday Experiments</h2>
+                        <div className="h-px bg-white/10 w-12 md:w-24"></div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+                        <div className="space-y-4">
+                            <SnowGlobe />
+                            <p className="text-sm text-gray-500 font-mono">Fig. A: Calm</p>
+                        </div>
+                        <div className="space-y-4">
+                            <PolyTree onComplete={() => setTreeComplete(true)} />
+                            <p className="text-sm text-gray-500 font-mono">Fig. B: Light</p>
+                        </div>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                >
+                    <Link href="/" className="inline-block px-10 py-4 bg-white/5 border border-white/10 text-white font-display font-medium rounded-full hover:bg-white/10 transition-all hover:scale-105">
                         Continue Exploring APPBAI
                     </Link>
                 </motion.div>
