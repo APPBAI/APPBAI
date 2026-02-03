@@ -97,13 +97,13 @@ export default function BrandSignature() {
                         © 2025 APPBAI. All rights reserved.
                     </p>
                     <div className="flex gap-6 md:gap-8">
-                        <a href="#" className="font-body text-body-sm text-gray-700 hover:text-white transition-colors duration-500">
+                        <a href="https://x.com/appbai" className="font-body text-body-sm text-gray-700 hover:text-white transition-colors duration-500">
                             Twitter
                         </a>
-                        <a href="#" className="font-body text-body-sm text-gray-700 hover:text-white transition-colors duration-500">
+                        <a href="https://www.linkedin.com/company/appbai/" className="font-body text-body-sm text-gray-700 hover:text-white transition-colors duration-500">
                             LinkedIn
                         </a>
-                        <a href="#" className="font-body text-body-sm text-gray-700 hover:text-white transition-colors duration-500">
+                        <a href="https://github.com/APPBAI" className="font-body text-body-sm text-gray-700 hover:text-white transition-colors duration-500">
                             GitHub
                         </a>
                     </div>
