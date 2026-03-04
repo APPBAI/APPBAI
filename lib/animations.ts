@@ -75,11 +75,11 @@ export const scaleOnHover: Variants = {
 // Blur reveal (for locked projects)
 export const blurReveal: Variants = {
     locked: {
-        filter: "blur(8px) grayscale(100%)",
+        filter: "blur(4px) grayscale(100%)",
         opacity: 0.4,
     },
     hover: {
-        filter: "blur(8px) grayscale(80%)",
+        filter: "blur(4px) grayscale(80%)",
         opacity: 0.5,
         transition: {
             duration: 1.2,
