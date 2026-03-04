@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -112,6 +113,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
             <body>
+                <SpeedInsights />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
