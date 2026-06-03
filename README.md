@@ -6,15 +6,15 @@ A creative, high-end "Coming Soon" website for APPBAI that demonstrates technica
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Run development server
-npm run dev
+pnpm run dev
 # → http://localhost:3000
 
 # Build for production
-npm run build
-npm start
+pnpm run build
+pnpm start
 ```
 
 ## Features
