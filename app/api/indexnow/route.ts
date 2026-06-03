@@ -81,8 +81,9 @@ export async function POST(request: Request) {
                 submittedUrls: urls,
             }, { status });
         }
-    } catch (error: any) {
-        console.error('Error submitting to IndexNow:', error);
-        return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 });
+    } catch (error) {
+        const err = error as Error;
+        console.error('Error submitting to IndexNow:', err);
+        return NextResponse.json({ error: err.message || 'Internal server error' }, { status: 500 });
     }
 }
