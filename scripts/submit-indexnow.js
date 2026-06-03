@@ -1,5 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const dns = require('dns');
+
+// Force IPv4 first to prevent ETIMEDOUT errors on systems with misconfigured IPv6 routing
+if (dns.setDefaultResultOrder) {
+    dns.setDefaultResultOrder('ipv4first');
+}
 
 // Configuration
 const KEY = process.env.INDEXNOW_KEY || '929dcea24943473ea0757f0052d7abb8';
