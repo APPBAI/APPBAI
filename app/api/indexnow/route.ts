@@ -37,7 +37,7 @@ export async function POST(request: Request) {
         }
 
         // 3. Setup IndexNow details
-        const KEY = process.env.INDEXNOW_KEY || '929dcea24943473ea0757f0052d7abb8';
+        const KEY = process.env.INDEXNOW_KEY || '05f8de14719c4895b91895ac432b9d01';
         const HOST = process.env.INDEXNOW_HOST || 'appbai.com';
         const KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION || `https://${HOST}/${KEY}.txt`;
         const INDEXNOW_API = 'https://api.indexnow.org/indexnow';
