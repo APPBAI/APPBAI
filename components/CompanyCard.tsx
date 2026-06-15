@@ -145,7 +145,7 @@ export default function CompanyCard({
             </div>
 
             {/* Subtle Learn More Link */}
-            <div className={`flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-gray-400 dark:text-zinc-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-500 ${!isTopRight ? "pl-14" : ""}`}>
+            <div className={`flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-gray-400 dark:text-zinc-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-500 w-full ${!isTopRight ? "justify-end" : "justify-start"}`}>
               <span>Learn More</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
