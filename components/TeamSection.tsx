@@ -12,6 +12,7 @@ interface TeamMember {
     twitter?: string;
     linkedin?: string;
     github?: string;
+    instagram?: string;
   };
   span?: string; // grid span class for collage
 }
@@ -22,7 +23,9 @@ const team: TeamMember[] = [
     role: "Founder & CEO",
     initials: "EB",
     socials: {
-      twitter: "https://x.com/elvis_baidoo",
+      twitter: "https://x.com/elvisthebuilder",
+      linkedin: "https://www.linkedin.com/in/elvisthebuilder/",
+      instagram: "https://www.instagram.com/elvisthebuilder/",
     },
     span: "md:col-span-2 md:row-span-2",
   },
@@ -32,6 +35,7 @@ const team: TeamMember[] = [
     initials: "KT",
     socials: {
       github: "https://github.com/APPBAI",
+      linkedin: "https://www.linkedin.com/in/kephastetteh/",
     },
     span: "md:col-span-1",
   },
@@ -48,13 +52,13 @@ const team: TeamMember[] = [
     span: "md:col-span-1",
   },
   {
-    name: "Edem",
+    name: "Dzisah Edem Kwabla",
     role: "Communications Strategist",
     initials: "ED",
     span: "md:col-span-1",
   },
   {
-    name: "James",
+    name: "James Enam Atsu Anthony",
     role: "Head of Administration",
     initials: "JA",
     span: "md:col-span-1",
