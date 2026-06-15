@@ -23,11 +23,11 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL("https://appbai.com"),
     title: {
-        default: "APPBAI — Building Technology for Society",
+        default: "APPBAI — Build Innovate Impact",
         template: "%s | APPBAI",
     },
-    description: "APPBAI is a design and technology studio building the next generation of intelligent systems that amplify human potential and help society.",
-    keywords: ["appbai", "APPBAI", "Technology", "AI", "Tech", "AI Studio", "Impact Technology", "Social Good Tech", "Intelligent Systems", "Future of Work", "Ikigai Design"],
+    description: "APPBAI is a technology lab building products that serve real human needs. Home of Halo AI and OffReel.",
+    keywords: ["appbai", "APPBAI", "Halo AI", "OffReel", "Technology", "AI", "AI Assistant", "Video Platform", "Impact Technology", "Social Good Tech", "Intelligent Systems", "Ikigai Design"],
     authors: [{ name: "APPBAI" }],
     creator: "APPBAI",
     publisher: "APPBAI",
@@ -52,16 +52,16 @@ export const metadata: Metadata = {
         canonical: "/",
     },
     openGraph: {
-        title: "APPBAI — Building Technology for Society",
-        description: "Designing the next generation of intelligent systems that address real challenges and empower people.",
+        title: "APPBAI — Build Innovate Impact",
+        description: "APPBAI is a technology lab building products that serve real human needs. Home of Halo AI and OffReel.",
         url: "https://appbai.com",
         siteName: "APPBAI",
         images: [
             {
-                url: "/appbai-logo.png", // Recommended: Create a dedicated social sharing image
+                url: "/appbai-logo.png",
                 width: 1200,
                 height: 630,
-                alt: "APPBAI - Building Technology for Society",
+                alt: "APPBAI — Build Innovate Impact",
             },
         ],
         locale: "en_US",
@@ -69,8 +69,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "APPBAI — Building Technology for Society",
-        description: "Designing the next generation of intelligent systems that address real challenges and empower people.",
+        title: "APPBAI — Build Innovate Impact",
+        description: "APPBAI is a technology lab building products that serve real human needs. Home of Halo AI and OffReel.",
         images: ["/appbai-logo.png"],
         creator: "@appbai",
     },
@@ -93,17 +93,33 @@ const jsonLd = {
     name: "APPBAI",
     url: "https://appbai.com",
     logo: "https://appbai.com/appbai-logo.png",
-    description: "Building technology that helps society through intelligent systems.",
+    description: "APPBAI is a technology lab building products that serve real human needs. Home of Halo AI and OffReel.",
+    slogan: "Build Innovate Impact",
     address: {
         "@type": "PostalAddress",
         addressCountry: "US",
     },
     sameAs: [
-        "https://twitter.com/appbai",
-        "https://linkedin.com/company/appbai",
-        "https://github.com/appbai",
+        "https://x.com/apbbai",
+        "https://www.instagram.com/appbai.co/",
+        "https://github.com/APPBAI",
+    ],
+    subOrganization: [
+        {
+            "@type": "Organization",
+            name: "Halo AI",
+            description: "An intelligent AI assistant with vision capabilities.",
+        },
+        {
+            "@type": "Organization",
+            name: "OffReel",
+            description: "A creative video and gallery platform.",
+        },
     ],
 };
+
+import Header from "@/components/Header";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
     children,
@@ -112,13 +128,18 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
-            <body suppressHydrationWarning>
-                <SpeedInsights />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                />
-                <SmoothScroll>{children}</SmoothScroll>
+            <body suppressHydrationWarning className="bg-white dark:bg-black-soft text-black dark:text-white">
+                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+                    <SpeedInsights />
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                    />
+                    <SmoothScroll>
+                        <Header />
+                        {children}
+                    </SmoothScroll>
+                </ThemeProvider>
             </body>
         </html>
     );

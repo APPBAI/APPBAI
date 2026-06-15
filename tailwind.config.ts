@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+    darkMode: 'class',
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -29,6 +30,19 @@ const config: Config = {
                     800: '#333333',
                     900: '#1a1a1a',
                 },
+                // Subsidiary accent colors
+                halo: {
+                    DEFAULT: '#3B82F6',
+                    light: '#60A5FA',
+                    dark: '#2563EB',
+                    glow: 'rgba(59, 130, 246, 0.15)',
+                },
+                offreel: {
+                    DEFAULT: '#F97316',
+                    light: '#FB923C',
+                    dark: '#EA580C',
+                    glow: 'rgba(249, 115, 22, 0.15)',
+                },
             },
             fontFamily: {
                 display: ['var(--font-display)', 'system-ui', 'sans-serif'],
@@ -49,6 +63,8 @@ const config: Config = {
                 'fade-in-slow': 'fadeIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                 'slide-up-slow': 'slideUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                 'reveal-text': 'revealText 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                'shimmer': 'shimmer 2.5s ease-in-out infinite',
+                'glow-pulse': 'glowPulse 3s ease-in-out infinite',
             },
             keyframes: {
                 fadeIn: {
@@ -62,6 +78,14 @@ const config: Config = {
                 revealText: {
                     '0%': { clipPath: 'inset(0 100% 0 0)' },
                     '100%': { clipPath: 'inset(0 0 0 0)' },
+                },
+                shimmer: {
+                    '0%, 100%': { opacity: '0.5' },
+                    '50%': { opacity: '1' },
+                },
+                glowPulse: {
+                    '0%, 100%': { boxShadow: '0 0 20px 0 var(--glow-color, rgba(255,255,255,0.05))' },
+                    '50%': { boxShadow: '0 0 40px 8px var(--glow-color, rgba(255,255,255,0.1))' },
                 },
             },
             transitionDuration: {
