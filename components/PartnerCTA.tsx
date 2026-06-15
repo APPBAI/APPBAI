@@ -17,7 +17,7 @@ export default function PartnerCTA() {
         className="relative"
       >
         {/* Framed container */}
-        <div className="relative border border-gray-200 dark:border-gray-800 p-10 md:p-16 lg:p-24 rounded-2xl bg-gray-50 dark:bg-black-medium transition-colors">
+        <div className="relative border border-gray-200 dark:border-gray-800 p-10 md:p-16 lg:p-24 rounded-2xl bg-alabaster-soft dark:bg-black-medium transition-colors">
           {/* Corner accents */}
           <div className="absolute top-0 left-0 w-10 h-10 md:w-14 md:h-14 border-t-2 border-l-2 border-black dark:border-white rounded-tl-2xl" />
           <div className="absolute top-0 right-0 w-10 h-10 md:w-14 md:h-14 border-t-2 border-r-2 border-black dark:border-white rounded-tr-2xl" />

@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${hasScrolled ? "bg-white/80 dark:bg-black-soft/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800" : "bg-transparent border-b border-transparent"}`}>
+      <header className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${hasScrolled ? "bg-alabaster/80 dark:bg-black-soft/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800" : "bg-transparent border-b border-transparent"}`}>
         <div className={`max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between transition-all duration-300 ${hasScrolled ? "h-14 md:h-16" : "h-16 md:h-20"}`}>
           
           {/* Logo */}
@@ -97,7 +97,7 @@ export default function Header() {
 
       {/* Mobile Menu - Full Screen Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-white dark:bg-black-soft text-black dark:text-white flex flex-col md:hidden">
+        <div className="fixed inset-0 z-[60] bg-alabaster dark:bg-black-soft text-black dark:text-white flex flex-col md:hidden">
           {/* Mobile Menu Header */}
           <div className="px-6 h-16 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-black dark:text-white transition-colors">

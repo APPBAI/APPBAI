@@ -19,6 +19,10 @@ const config: Config = {
                     DEFAULT: '#ffffff',
                     soft: '#f5f5f5',
                 },
+                alabaster: {
+                    DEFAULT: '#FAF9F6', // Soft warm off-white (easy on the eyes)
+                    soft: '#F3F2EE',    // Slightly darker warm tone for structural cards/sections
+                },
                 gray: {
                     100: '#e5e5e5',
                     200: '#cccccc',

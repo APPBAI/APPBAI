@@ -128,7 +128,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
-            <body suppressHydrationWarning className="bg-white dark:bg-black-soft text-black dark:text-white">
+            <body suppressHydrationWarning className="bg-alabaster dark:bg-black-soft text-black dark:text-white">
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
                     <SpeedInsights />
                     <script
