@@ -11,16 +11,9 @@ const companies = [
     category: "Desktop AI",
     status: "Coming Soon",
     href: "#", // TODO: Replace with real external URL
-    accentClass: "glow-halo",
     glowColor: "rgba(59, 130, 246, 0.12)",
     colorTheme: "#3b82f6",
-    features: [
-      "Stealth-Mode Screen Overlay",
-      "Instant Shift-Hover Command",
-      "Undetectable Screen Recording",
-      "Context-Aware Assistance"
-    ],
-    mockupType: "halo" as const
+    bevelSide: "top-right" as const
   },
   {
     name: "OffReel",
@@ -32,13 +25,7 @@ const companies = [
     accentClass: "glow-offreel",
     glowColor: "rgba(249, 115, 22, 0.12)",
     colorTheme: "#f97316",
-    features: [
-      "TikTok-Style Discovery Interface",
-      "Double-Tap to Like Offline Videos",
-      "Instant Smart Filter Engine",
-      "100% Offline, Privacy-First"
-    ],
-    mockupType: "offreel" as const
+    bevelSide: "bottom-left" as const
   },
 ];
 
