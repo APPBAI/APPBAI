@@ -66,7 +66,7 @@ const team: TeamMember[] = [
     span: "md:col-span-1",
   },
   {
-    name: "James Enam Atsu Anthony",
+    name: "James E.A Anthony",
     role: "Head of Administration",
     initials: "JA",
     span: "md:col-span-1",
