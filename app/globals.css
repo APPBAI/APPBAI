@@ -82,6 +82,22 @@ body {
    Company Card Styles
    ======================== */
 
+.bevel-card {
+  --bevel-size: 40px;
+}
+
+@media (min-width: 640px) {
+  .bevel-card {
+    --bevel-size: 52px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bevel-card {
+    --bevel-size: 64px;
+  }
+}
+
 /* Glassmorphic card base */
 .card-glass {
   background: rgba(255, 255, 255, 0.02);

@@ -30,7 +30,7 @@ export default function Home() {
             </p>
           </div>
 
-          <h1 className="font-display font-light text-[32px] md:text-7xl lg:text-[90px] leading-[1.05] tracking-tight max-w-5xl mb-6 md:mb-8 text-black dark:text-white">
+          <h1 className="font-display font-light text-[34px] sm:text-5xl md:text-7xl lg:text-[90px] leading-[1.05] tracking-tight max-w-5xl mb-6 md:mb-8 text-black dark:text-white">
             We build companies <br className="hidden md:inline" />
             that build the <span className="font-normal italic">future.</span>
           </h1>

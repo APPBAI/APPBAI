@@ -39,11 +39,11 @@ export default function CompanyCard({
     });
   };
 
-  // Define clipped polygons (64px large bevels for strong visual impact)
+  // Define clipped polygons (using responsive CSS variable)
   const isTopRight = bevelSide === "top-right";
   const clipPath = isTopRight
-    ? "polygon(0 0, calc(100% - 64px) 0, 100% 64px, 100% 100%, 0 100%)"
-    : "polygon(0 0, 100% 0, 100% 100%, 64px 100%, 0 calc(100% - 64px))";
+    ? "polygon(0 0, calc(100% - var(--bevel-size)) 0, 100% var(--bevel-size), 100% 100%, 0 100%)"
+    : "polygon(0 0, 100% 0, 100% 100%, var(--bevel-size) 100%, 0 calc(100% - var(--bevel-size)))";
 
   // Dynamic values for rotation offsets
   const bgRotate = isTopRight ? 1.8 : -1.8;
@@ -59,7 +59,7 @@ export default function CompanyCard({
         delay: index * 0.2,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="relative w-full max-w-[520px] mx-auto min-h-[340px]"
+      className="relative w-full max-w-[450px] sm:max-w-[520px] lg:max-w-none xl:max-w-[600px] mx-auto min-h-[340px] bevel-card"
     >
       <Link
         href={href}
@@ -100,7 +100,7 @@ export default function CompanyCard({
             duration: 0.5,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="relative bg-white dark:bg-zinc-950 p-8 md:p-10 rounded-[27px] border border-gray-200/60 dark:border-zinc-800/80 shadow-sm transition-all duration-700 h-full flex flex-col justify-between"
+          className="relative bg-white dark:bg-zinc-950 p-6 sm:p-8 md:p-10 rounded-[27px] border border-gray-200/60 dark:border-zinc-800/80 shadow-sm transition-all duration-700 h-full flex flex-col justify-between"
           style={{
             clipPath: clipPath,
           }}
@@ -115,7 +115,10 @@ export default function CompanyCard({
 
           <div className="relative z-10 flex flex-col justify-between h-full">
             {/* Card Header Info */}
-            <div className={`flex items-center justify-between mb-6 ${isTopRight ? "pr-14" : ""}`}>
+            <div 
+              className="flex items-center justify-between mb-6"
+              style={isTopRight ? { paddingRight: "calc(var(--bevel-size) + 8px)" } : undefined}
+            >
               <div className="flex items-center gap-2">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-400 font-mono font-medium border border-gray-200 dark:border-zinc-800 px-3 py-1.5 rounded bg-white/50 dark:bg-zinc-900/50">
                   {category}
@@ -136,7 +139,7 @@ export default function CompanyCard({
 
             {/* Title & Tagline */}
             <div className="max-w-xl mb-6">
-              <h3 className="font-display text-2xl md:text-3xl text-black dark:text-white mb-3 tracking-tight">
+              <h3 className="font-display text-xl sm:text-2xl md:text-3xl text-black dark:text-white mb-3 tracking-tight">
                 {name}
               </h3>
               <p className="text-gray-500 dark:text-zinc-400 text-sm leading-relaxed font-body">
