@@ -30,7 +30,7 @@ const team: TeamMember[] = [
     span: "md:col-span-2 md:row-span-2",
   },
   {
-    name: "Kephas Tetteh",
+    name: "Tetteh Kephas Teye-Lao",
     role: "Lead Engineer",
     initials: "KT",
     socials: {
