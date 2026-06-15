@@ -9,6 +9,7 @@ import {
 import CompaniesSection from "@/components/CompaniesSection";
 import TeamSection from "@/components/TeamSection";
 import PartnerCTA from "@/components/PartnerCTA";
+import HeroTitle from "@/components/HeroTitle";
 
 export default function Home() {
   return (
@@ -30,10 +31,7 @@ export default function Home() {
             </p>
           </div>
 
-          <h1 className="font-display font-light text-[34px] sm:text-5xl md:text-7xl lg:text-[90px] leading-[1.05] tracking-tight max-w-5xl mb-6 md:mb-8 text-black dark:text-white">
-            We build companies <br className="hidden md:inline" />
-            that build the <span className="font-normal italic">future.</span>
-          </h1>
+          <HeroTitle />
           <p className="text-gray-600 dark:text-gray-300 text-base md:text-xl max-w-xl mb-8 md:mb-12 font-light leading-relaxed">
             APPBAI is a technology lab creating products that serve real human
             needs. Home of Halo AI and OffReel.
