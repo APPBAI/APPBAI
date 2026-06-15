@@ -46,6 +46,7 @@ const team: TeamMember[] = [
     span: "md:col-span-1",
     socials: {
       linkedin: "https://www.linkedin.com/in/lawrence-quao-0579912b2/",
+      instagram: "https:/instagram.com/larryh561"
     }
   },
   {
