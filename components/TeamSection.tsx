@@ -44,6 +44,9 @@ const team: TeamMember[] = [
     role: "Design",
     initials: "LT",
     span: "md:col-span-1",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/lawrence-quao-0579912b2/",
+    }
   },
   {
     name: "Hafsa Ahmed Hama",
