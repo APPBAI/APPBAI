@@ -13,8 +13,7 @@ import PartnerCTA from "@/components/PartnerCTA";
 export default function Home() {
   return (
     <div className="min-h-screen font-body selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
-      {/* Hero Section */}
-      <section className="relative px-6 md:px-12 lg:px-24 pt-20 pb-16 md:pt-32 md:pb-32 max-w-[1400px] mx-auto border-b border-gray-200 dark:border-gray-800 overflow-hidden">
+      <section className="relative px-6 md:px-12 lg:px-24 pt-28 pb-16 md:pt-44 md:pb-32 max-w-[1400px] mx-auto border-b border-gray-200 dark:border-gray-800 overflow-hidden">
         {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
         
