@@ -79,6 +79,23 @@ body {
 }
 
 /* ========================
+   Hero Snake-Wave Underline
+   ======================== */
+
+@keyframes snake-wave {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-snake-wave {
+  animation: snake-wave 2.8s linear infinite;
+}
+
+/* ========================
    Company Card Styles
    ======================== */
 
