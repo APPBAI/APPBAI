@@ -234,105 +234,167 @@ export default function Home() {
       <PartnerCTA />
 
       {/* Footer */}
-      <footer className="bg-gray-50 dark:bg-black-medium text-black dark:text-white py-16 md:py-32 relative overflow-hidden transition-colors">
-        <div className="px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto relative z-10">
-          <div className="mb-16">
-            <div className="w-12 h-12 flex items-center justify-center mb-8">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M40.6821 12.9682C42.8398 16.2295 43.994 20.0518 44.0021 23.9622C44.0102 27.8727 42.8717 31.6997 40.7276 34.9699C38.5834 38.2401 35.5276 40.81 31.9382 42.3616C28.3488 43.9133 24.3833 44.3787 20.5321 43.7002M7.31813 35.0322C5.16051 31.7701 4.00672 27.9469 3.99955 24.0357C3.99237 20.1246 5.13211 16.2972 7.27774 13.0271C9.42337 9.75708 12.4807 7.1879 16.0714 5.63751C19.6622 4.08712 23.6287 3.62357 27.4801 4.30423"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-gray-400 dark:text-gray-600"
-                />
-                <path
-                  d="M24 30C27.3137 30 30 27.3137 30 24C30 20.6863 27.3137 18 24 18C20.6863 18 18 20.6863 18 24C18 27.3137 20.6863 30 24 30Z"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-gray-400 dark:text-gray-600"
-                />
-                <path
-                  d="M38 14C40.2091 14 42 12.2091 42 10C42 7.79086 40.2091 6 38 6C35.7909 6 34 7.79086 34 10C34 12.2091 35.7909 14 38 14Z"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-gray-400 dark:text-gray-600"
-                />
-                <path
-                  d="M10 42C12.2091 42 14 40.2091 14 38C14 35.7909 12.2091 34 10 34C7.79086 34 6 35.7909 6 38C6 40.2091 7.79086 42 10 42Z"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-gray-400 dark:text-gray-600"
-                />
-              </svg>
-            </div>
-            <h2 className="font-display text-2xl md:text-5xl lg:text-6xl max-w-3xl mb-6 md:mb-8 leading-tight text-black dark:text-white">
-              We build for the long term.
-              <br />
-              <span className="text-gray-500 font-light">
+      <footer className="bg-gray-50 dark:bg-black-medium text-black dark:text-white relative overflow-hidden transition-colors">
+        {/* Top Statement */}
+        <div className="px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto pt-20 md:pt-32 pb-16 md:pb-24 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-24">
+            <div className="max-w-2xl">
+              <div className="w-10 h-10 flex items-center justify-center mb-6">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M40.6821 12.9682C42.8398 16.2295 43.994 20.0518 44.0021 23.9622C44.0102 27.8727 42.8717 31.6997 40.7276 34.9699C38.5834 38.2401 35.5276 40.81 31.9382 42.3616C28.3488 43.9133 24.3833 44.3787 20.5321 43.7002M7.31813 35.0322C5.16051 31.7701 4.00672 27.9469 3.99955 24.0357C3.99237 20.1246 5.13211 16.2972 7.27774 13.0271C9.42337 9.75708 12.4807 7.1879 16.0714 5.63751C19.6622 4.08712 23.6287 3.62357 27.4801 4.30423"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-gray-300 dark:text-gray-700"
+                  />
+                  <path
+                    d="M24 30C27.3137 30 30 27.3137 30 24C30 20.6863 27.3137 18 24 18C20.6863 18 18 20.6863 18 24C18 27.3137 20.6863 30 24 30Z"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-gray-300 dark:text-gray-700"
+                  />
+                  <path
+                    d="M38 14C40.2091 14 42 12.2091 42 10C42 7.79086 40.2091 6 38 6C35.7909 6 34 7.79086 34 10C34 12.2091 35.7909 14 38 14Z"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-gray-300 dark:text-gray-700"
+                  />
+                  <path
+                    d="M10 42C12.2091 42 14 40.2091 14 38C14 35.7909 12.2091 34 10 34C7.79086 34 6 35.7909 6 38C6 40.2091 7.79086 42 10 42Z"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-gray-300 dark:text-gray-700"
+                  />
+                </svg>
+              </div>
+              <h2 className="font-display text-2xl md:text-4xl lg:text-5xl leading-tight text-black dark:text-white tracking-tight">
+                We build for the long term.
+              </h2>
+              <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl font-light mt-3 font-body">
                 Sustainability is not a feature, it is the foundation.
-              </span>
-            </h2>
+              </p>
+            </div>
+            <a
+              href="mailto:hello@appbai.com"
+              className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-300 transition-colors border-b border-black/30 dark:border-white/30 pb-1 w-fit hover:border-black/80 dark:hover:border-white/80"
+            >
+              hello@appbai.com
+            </a>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mt-24 md:mt-48 border-t border-gray-200 dark:border-gray-800 pt-6 md:pt-8">
-            <div className="flex flex-wrap gap-4 md:gap-6 text-sm text-gray-500 w-full md:w-auto mb-6 md:mb-0">
-              <a
-                href="https://x.com/apbbai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black dark:hover:text-white transition-colors"
-              >
-                Twitter
-              </a>
-              <a
-                href="https://www.instagram.com/appbai.co/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black dark:hover:text-white transition-colors"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://github.com/APPBAI"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-black dark:hover:text-white transition-colors"
-              >
-                GitHub
-              </a>
-              <Link
-                href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
-              >
-                Terms
-              </Link>
-              <Link
-                href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
-              >
-                Privacy
-              </Link>
-            </div>
-            <div className="text-left md:text-right text-xs text-gray-400 shrink-0">
-              <p>
-                © {new Date().getFullYear()} APPBAI Inc. All rights reserved.
+          {/* Navigation Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 border-t border-gray-200 dark:border-gray-800 pt-12">
+            {/* Lab */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-mono font-medium mb-5">
+                Lab
               </p>
-              <p>Build &middot; Innovate &middot; Impact</p>
+              <ul className="space-y-3 text-sm font-body">
+                <li>
+                  <Link href="#philosophy" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Philosophy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#about" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#team" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Team
+                  </Link>
+                </li>
+              </ul>
             </div>
+
+            {/* Companies */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-mono font-medium mb-5">
+                Companies
+              </p>
+              <ul className="space-y-3 text-sm font-body">
+                <li>
+                  <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Halo AI
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    OffReel
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Connect */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-mono font-medium mb-5">
+                Connect
+              </p>
+              <ul className="space-y-3 text-sm font-body">
+                <li>
+                  <a href="https://x.com/apbbai" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Twitter / X
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/appbai.co/" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/APPBAI" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    GitHub
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 font-mono font-medium mb-5">
+                Legal
+              </p>
+              <ul className="space-y-3 text-sm font-body">
+                <li>
+                  <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-200 dark:border-gray-800">
+          <div className="px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-gray-400 font-body">
+              © {new Date().getFullYear()} APPBAI Inc. All rights reserved.
+            </p>
+            <p className="text-xs text-gray-400 font-body tracking-widest uppercase">
+              Build &middot; Innovate &middot; Impact
+            </p>
           </div>
         </div>
       </footer>

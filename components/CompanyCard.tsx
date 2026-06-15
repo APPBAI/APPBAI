@@ -8,6 +8,7 @@ interface CompanyCardProps {
   name: string;
   tagline: string;
   category: string;
+  status?: string;
   href: string;
   accentClass: string;
   icon: React.ReactNode;
@@ -18,6 +19,7 @@ export default function CompanyCard({
   name,
   tagline,
   category,
+  status,
   href,
   accentClass,
   icon,
@@ -42,9 +44,20 @@ export default function CompanyCard({
       >
         {/* Category badge */}
         <div className="flex items-center justify-between mb-8 md:mb-12">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-body border border-gray-200 dark:border-gray-800 px-3 py-1.5 rounded-full">
-            {category}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 font-body border border-gray-200 dark:border-gray-800 px-3 py-1.5 rounded-full">
+              {category}
+            </span>
+            {status && (
+              <span className={`text-[9px] tracking-[0.15em] font-body px-2.5 py-1 rounded-full font-medium ${
+                status === "Coming Soon"
+                  ? "bg-amber-500/10 text-amber-500 border border-amber-500/20"
+                  : "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
+              }`}>
+                {status}
+              </span>
+            )}
+          </div>
           <ArrowUpRight
             className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-black dark:group-hover:text-white transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             strokeWidth={1.5}

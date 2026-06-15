@@ -8,8 +8,9 @@ const companies = [
   {
     name: "Halo AI",
     tagline:
-      "An intelligent AI assistant with vision capabilities — designed to see, understand, and help.",
-    category: "Artificial Intelligence",
+      "An undetectable AI desktop assistant built for high-stakes environments — meetings, interviews, and live sessions. With stealth-mode screen overlay and a shift-to-hover command that instantly clears your workspace, Halo keeps you sharp without raising suspicion.",
+    category: "Desktop AI",
+    status: "Coming Soon",
     href: "#", // TODO: Replace with real external URL
     accentClass: "glow-halo",
     icon: (
@@ -21,8 +22,9 @@ const companies = [
   {
     name: "OffReel",
     tagline:
-      "A creative video and gallery platform — capture, curate, and share your visual stories.",
+      "An open-source media player that brings the feel of online content discovery to your offline library. Swipe through your videos in a TikTok-style feed, double-tap to favorite, and instantly filter by mood, length, or format — no internet required.",
     category: "Media & Creative",
+    status: "Open Source",
     href: "#", // TODO: Replace with real external URL
     accentClass: "glow-offreel",
     icon: (
@@ -47,16 +49,16 @@ export default function CompaniesSection() {
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         className="mb-12 md:mb-20"
       >
-        <p className="text-xs uppercase tracking-widest text-gray-500 mb-4">
+        <p className="text-xs uppercase tracking-widest text-gray-500 mb-4 font-body">
           Our Companies
         </p>
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-black dark:text-white tracking-tight">
-            The APPBAI Portfolio
+            What we&apos;re building.
           </h2>
           <p className="text-gray-500 dark:text-gray-400 text-sm max-w-sm leading-relaxed font-body">
-            Each company operates independently, united by a shared commitment
-            to building technology that serves real human needs.
+            Each product operates independently, united by a shared commitment
+            to solving real friction with focused, high-performance software.
           </p>
         </div>
       </motion.div>
