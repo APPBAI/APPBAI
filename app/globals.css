@@ -46,16 +46,15 @@ body {
 
 /* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -151,7 +150,9 @@ html:not(.dark) .card-glass:hover {
 
 .glow-halo:hover {
   border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 0 40px 0 rgba(59, 130, 246, 0.1), 0 20px 60px -12px rgba(59, 130, 246, 0.08);
+  box-shadow:
+    0 0 40px 0 rgba(59, 130, 246, 0.1),
+    0 20px 60px -12px rgba(59, 130, 246, 0.08);
 }
 
 .glow-offreel {
@@ -160,20 +161,26 @@ html:not(.dark) .card-glass:hover {
 
 .glow-offreel:hover {
   border-color: rgba(249, 115, 22, 0.3);
-  box-shadow: 0 0 40px 0 rgba(249, 115, 22, 0.1), 0 20px 60px -12px rgba(249, 115, 22, 0.08);
+  box-shadow:
+    0 0 40px 0 rgba(249, 115, 22, 0.1),
+    0 20px 60px -12px rgba(249, 115, 22, 0.08);
 }
 
 /* Light mode glow variants */
 :root:not(.dark) .glow-halo:hover,
 html:not(.dark) .glow-halo:hover {
   border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 0 40px 0 rgba(59, 130, 246, 0.08), 0 20px 60px -12px rgba(59, 130, 246, 0.12);
+  box-shadow:
+    0 0 40px 0 rgba(59, 130, 246, 0.08),
+    0 20px 60px -12px rgba(59, 130, 246, 0.12);
 }
 
 :root:not(.dark) .glow-offreel:hover,
 html:not(.dark) .glow-offreel:hover {
   border-color: rgba(249, 115, 22, 0.4);
-  box-shadow: 0 0 40px 0 rgba(249, 115, 22, 0.08), 0 20px 60px -12px rgba(249, 115, 22, 0.12);
+  box-shadow:
+    0 0 40px 0 rgba(249, 115, 22, 0.08),
+    0 20px 60px -12px rgba(249, 115, 22, 0.12);
 }
 
 /* Shimmer border effect */
@@ -183,7 +190,7 @@ html:not(.dark) .glow-offreel:hover {
 }
 
 .card-shimmer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;

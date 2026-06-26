@@ -85,8 +85,7 @@ export default function CompanyCard({
             clipPath: clipPath,
             background: isHovered
               ? `radial-gradient(220px circle at ${coords.x}px ${coords.y}px, ${colorTheme}, rgba(120, 120, 120, 0.25))`
-              : undefined,
-            backgroundColor: isHovered ? undefined : `${colorTheme}1A` // 10% opacity fallback
+              : `${colorTheme}1A`,
           }}
         />
 
@@ -115,9 +114,13 @@ export default function CompanyCard({
 
           <div className="relative z-10 flex flex-col justify-between h-full">
             {/* Card Header Info */}
-            <div 
+            <div
               className="flex items-center justify-between mb-6"
-              style={isTopRight ? { paddingRight: "calc(var(--bevel-size) + 8px)" } : undefined}
+              style={
+                isTopRight
+                  ? { paddingRight: "calc(var(--bevel-size) + 8px)" }
+                  : undefined
+              }
             >
               <div className="flex items-center gap-2">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-400 font-mono font-medium border border-gray-200 dark:border-zinc-800 px-3 py-1.5 rounded bg-white/50 dark:bg-zinc-900/50">
@@ -148,7 +151,9 @@ export default function CompanyCard({
             </div>
 
             {/* Subtle Learn More Link */}
-            <div className={`flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-gray-400 dark:text-zinc-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-500 w-full ${!isTopRight ? "justify-end" : "justify-start"}`}>
+            <div
+              className={`flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-gray-400 dark:text-zinc-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-500 w-full ${!isTopRight ? "justify-end" : "justify-start"}`}
+            >
               <span>Learn More</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>

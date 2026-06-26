@@ -13,7 +13,7 @@ const companies = [
     href: "#", // TODO: Replace with real external URL
     glowColor: "rgba(59, 130, 246, 0.12)",
     colorTheme: "#3b82f6",
-    bevelSide: "top-right" as const
+    bevelSide: "top-right" as const,
   },
   {
     name: "OffReel",
@@ -25,7 +25,7 @@ const companies = [
     accentClass: "glow-offreel",
     glowColor: "rgba(249, 115, 22, 0.12)",
     colorTheme: "#f97316",
-    bevelSide: "bottom-left" as const
+    bevelSide: "bottom-left" as const,
   },
 ];
 

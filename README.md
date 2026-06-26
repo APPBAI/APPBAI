@@ -29,7 +29,7 @@ pnpm start
 - **Responsive Diagonal Bevels**: Dynamic asymmetric `clip-path` cuts that adapt gracefully across viewports (`40px` on mobile, `52px` on tablet, `64px` on desktop) using scoped CSS custom properties to prevent layout cramping.
 - **Premium Alabaster Light Mode**: Replaced harsh, high-contrast pure white screens with a luxurious, warm Alabaster off-white (`#FAF9F6`) to reduce glare and offer a print-editorial aesthetic.
 - **Fluid Typography & Spacing**: Precise clamp scaling and breathability adjustments (e.g., enlarged hero top margins) ensuring the portal looks perfectly balanced on mobile, tablet, and ultra-wide screens.
-- **Philosophy-Driven Layout**: Interactively presents the lab's core philosophy (guided by *Ikigai*) with an elegant SVG Venn diagram representing passion, skill, need, and sustainability.
+- **Philosophy-Driven Layout**: Interactively presents the lab's core philosophy (guided by _Ikigai_) with an elegant SVG Venn diagram representing passion, skill, need, and sustainability.
 
 ---
 

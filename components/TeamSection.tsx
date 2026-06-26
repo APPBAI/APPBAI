@@ -46,8 +46,8 @@ const team: TeamMember[] = [
     span: "md:col-span-1",
     socials: {
       linkedin: "https://www.linkedin.com/in/lawrence-quao-0579912b2/",
-      instagram: "https:/instagram.com/larryh561"
-    }
+      instagram: "https:/instagram.com/larryh561",
+    },
   },
   {
     name: "Hafsa Ahmed Hama",
@@ -57,7 +57,7 @@ const team: TeamMember[] = [
     socials: {
       instagram: "https://www.instagram.com/hafsa_ace/",
       linkedin: "https://www.linkedin.com/in/hafsa-ahmed-hama-b47528315/",
-    }
+    },
   },
   {
     name: "Dzisah Edem Kwabla",
@@ -73,7 +73,11 @@ const team: TeamMember[] = [
   },
 ];
 
-function SocialIcon({ type }: { type: "twitter" | "linkedin" | "github" | "instagram" }) {
+function SocialIcon({
+  type,
+}: {
+  type: "twitter" | "linkedin" | "github" | "instagram";
+}) {
   if (type === "twitter") {
     return (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
@@ -149,7 +153,10 @@ export default function TeamSection() {
             <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-black-medium flex items-center justify-center">
               {member.image ? (
                 // Real image would go here
-                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${member.image})` }} />
+                <div
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(${member.image})` }}
+                />
               ) : (
                 <span className="font-display text-5xl md:text-7xl text-gray-300/40 dark:text-gray-700/40 font-bold select-none">
                   {member.initials}

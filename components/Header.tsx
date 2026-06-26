@@ -34,8 +34,8 @@ export default function Header() {
   );
 
   const toggleTheme = () => {
-    const currentTheme = theme === 'system' ? resolvedTheme : theme;
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    const currentTheme = theme === "system" ? resolvedTheme : theme;
+    setTheme(currentTheme === "dark" ? "light" : "dark");
   };
 
   const navLinks = [
@@ -46,12 +46,23 @@ export default function Header() {
 
   return (
     <>
-      <header className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${hasScrolled ? "bg-alabaster/80 dark:bg-black-soft/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800" : "bg-transparent border-b border-transparent"}`}>
-        <div className={`max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between transition-all duration-300 ${hasScrolled ? "h-14 md:h-16" : "h-16 md:h-20"}`}>
-          
+      <header
+        className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${hasScrolled ? "bg-alabaster/80 dark:bg-black-soft/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800" : "bg-transparent border-b border-transparent"}`}
+      >
+        <div
+          className={`max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between transition-all duration-300 ${hasScrolled ? "h-14 md:h-16" : "h-16 md:h-20"}`}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center text-black dark:text-white transition-colors">
-            <svg viewBox="0 0 205 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="h-4 md:h-5 w-auto">
+          <Link
+            href="/"
+            className="flex items-center text-black dark:text-white transition-colors"
+          >
+            <svg
+              viewBox="0 0 205 40"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 md:h-5 w-auto"
+            >
               {wordmarkPaths}
             </svg>
           </Link>
@@ -71,22 +82,27 @@ export default function Header() {
 
           {/* Right Actions - Desktop */}
           <div className="hidden md:flex items-center">
-            <Link 
-              href="#contact" 
+            <Link
+              href="#contact"
               className="h-10 px-6 flex items-center justify-center border border-gray-300 dark:border-gray-700 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-black dark:text-white border-r-0"
             >
               Partner with Us
             </Link>
-            <button 
+            <button
               onClick={toggleTheme}
               className="h-10 w-10 flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-black dark:text-white"
             >
-              {mounted && ((theme === 'dark' || resolvedTheme === 'dark') ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
+              {mounted &&
+                (theme === "dark" || resolvedTheme === "dark" ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                ))}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden h-10 w-10 flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-black dark:text-white"
             onClick={() => setMobileMenuOpen(true)}
           >
@@ -100,12 +116,21 @@ export default function Header() {
         <div className="fixed inset-0 z-[60] bg-alabaster dark:bg-black-soft text-black dark:text-white flex flex-col md:hidden">
           {/* Mobile Menu Header */}
           <div className="px-6 h-16 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-black dark:text-white transition-colors">
-              <svg viewBox="0 0 205 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="h-5 w-auto">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-black dark:text-white transition-colors"
+            >
+              <svg
+                viewBox="0 0 205 40"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-auto"
+              >
                 {wordmarkPaths}
               </svg>
             </Link>
-            <button 
+            <button
               className="h-10 w-10 flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -129,18 +154,23 @@ export default function Header() {
 
           {/* Bottom Actions */}
           <div className="px-6 py-8 flex items-center justify-center gap-0">
-            <Link 
-              href="#contact" 
+            <Link
+              href="#contact"
               className="h-12 px-8 flex items-center justify-center border border-gray-300 dark:border-gray-700 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-black dark:text-white border-r-0"
               onClick={() => setMobileMenuOpen(false)}
             >
               Partner with Us
             </Link>
-            <button 
+            <button
               onClick={toggleTheme}
               className="h-12 w-12 flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-black dark:text-white"
             >
-              {mounted && ((theme === 'dark' || resolvedTheme === 'dark') ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />)}
+              {mounted &&
+                (theme === "dark" || resolvedTheme === "dark" ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                ))}
             </button>
           </div>
         </div>
