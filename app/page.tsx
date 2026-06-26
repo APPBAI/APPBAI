@@ -10,6 +10,7 @@ import CompaniesSection from "@/components/CompaniesSection";
 import TeamSection from "@/components/TeamSection";
 import PartnerCTA from "@/components/PartnerCTA";
 import HeroTitle from "@/components/HeroTitle";
+import FooterQuote from "@/components/FooterQuote";
 
 export default function Home() {
   return (
@@ -383,9 +384,7 @@ export default function Home() {
               <h2 className="font-display text-2xl md:text-4xl lg:text-5xl leading-tight text-black dark:text-white tracking-tight">
                 We build for the long term.
               </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl font-light mt-3 font-body">
-                Sustainability is not a feature, it is the foundation.
-              </p>
+              <FooterQuote />
             </div>
             <a
               href="mailto:hello@appbai.com"
@@ -527,10 +526,6 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
               <p className="text-xs text-gray-400 font-body">
                 © {new Date().getFullYear()} APPBAI Inc. All rights reserved.
-              </p>
-              <span className="hidden md:block text-gray-500">•</span>
-              <p className="text-xs text-gray-500 italic font-body text-center md:text-left">
-                &quot;For we live by faith not by sight &quot;
               </p>
             </div>
             <p className="text-xs text-gray-400 font-body tracking-widest uppercase">
